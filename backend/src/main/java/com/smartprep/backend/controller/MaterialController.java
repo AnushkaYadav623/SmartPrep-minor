@@ -5,6 +5,8 @@ import com.smartprep.backend.repository.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/materials")
 public class MaterialController {
@@ -23,4 +25,5 @@ public class MaterialController {
     public java.util.List<Material> getAllMaterials() {
         return materialRepository.findAll();
     }
+
 }
