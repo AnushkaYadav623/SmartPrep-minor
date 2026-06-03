@@ -6,24 +6,38 @@ function Upload(){
     const [description,setDescription] =
         useState("");
 
-    const uploadMaterial = async() => {
+    const uploadMaterial = async () => {
+        try {
+            const response = await fetch(
+                "http://localhost:8080/materials/add",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        filePath: "sample.pdf"
+                    })
+                }
+            );
 
-        await fetch(
-            "http://localhost:8080/materials/add",
-            {
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    title,
-                    description,
-                    filePath:"sample.pdf"
-                })
+            console.log("Status:", response.status);
+
+            if (!response.ok) {
+                throw new Error("Server returned " + response.status);
             }
-        );
 
-        alert("Material Saved");
+            const data = await response.json();
+
+            console.log(data);
+
+            alert("Material Saved");
+        } catch (error) {
+            console.error(error);
+            alert("Upload failed: " + error.message);
+        }
     };
 
     return(

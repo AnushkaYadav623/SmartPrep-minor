@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/materials")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MaterialController {
 
     @Autowired
