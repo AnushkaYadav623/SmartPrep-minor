@@ -1,31 +1,40 @@
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
 import Quiz from "./pages/Quiz";
+import Schedule from "./pages/Schedule";
+import Notes from "./pages/Notes";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
-function App(){
+function App() {
 
-    return(
-        <div>
+  return (
 
-            <h1>SmartPrep AI</h1>
+    <BrowserRouter>
 
-            <Signup/>
+      <Routes>
 
-            <hr/>
+        <Route path="/" element={<Dashboard />} />
 
-            <Login/>
+        <Route path="/upload" element={<Upload />} />
 
-            <hr/>
+        <Route path="/quiz" element={<Quiz />} />
 
-            <Upload/>
+        <Route path="/schedule" element={<Schedule />} />
 
-            <hr/>
+        <Route path="/notes" element={<Notes />} />
 
-            <Quiz/>
+        <Route path="/login" element={<Login />} />
 
-        </div>
-    );
+        <Route path="/signup" element={<Signup />} />
+
+      </Routes>
+
+    </BrowserRouter>
+
+  );
 }
 
 export default App;
