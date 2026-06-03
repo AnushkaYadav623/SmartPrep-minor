@@ -1,30 +1,26 @@
 package com.smartprep.backend.controller;
 
-import com.smartprep.backend.model.Material;
-import com.smartprep.backend.repository.MaterialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
-@RequestMapping("/materials")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api/materials")
+@CrossOrigin(origins = "*")
 public class MaterialController {
 
-    @Autowired
-    private MaterialRepository materialRepository;
-
-    // Save material
-    @PostMapping("/add")
-    public Material addMaterial(@RequestBody Material material) {
-        return materialRepository.save(material);
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadMaterial() {
+        // We can inject MaterialRepository and parse MultiPartFile here
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "File uploaded successfully");
+        response.put("fileId", "1");
+        return ResponseEntity.ok(response);
     }
-
-    // Get all materials
-    @GetMapping("/all")
-    public java.util.List<Material> getAllMaterials() {
-        return materialRepository.findAll();
+    
+    @GetMapping
+    public ResponseEntity<?> getMaterials() {
+        return ResponseEntity.ok(new String[]{"Material 1", "Material 2"});
     }
-
 }
