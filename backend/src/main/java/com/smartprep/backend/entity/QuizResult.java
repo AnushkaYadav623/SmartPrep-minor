@@ -12,8 +12,11 @@ public class QuizResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // TODO:
+    // When frontend JWT authentication is integrated,
+    // make QuizResult.user mandatory again and require authenticated submissions.
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String topic;
