@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Bell, Search, User, LogOut } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+=======
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { Bell, Search, User } from 'lucide-react';
+>>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
 import './TopNav.css';
 
 const TopNav = () => {
   const location = useLocation();
+<<<<<<< HEAD
   const { user, logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+=======
+>>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
   
   const getPageTitle = () => {
     switch (location.pathname) {
@@ -21,10 +30,13 @@ const TopNav = () => {
     }
   };
 
+<<<<<<< HEAD
   const handleLogout = () => {
     logout();
   };
 
+=======
+>>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
   return (
     <header className="topnav-container">
       <h1 className="page-title">{getPageTitle()}</h1>
@@ -39,6 +51,7 @@ const TopNav = () => {
           <Bell size={20} />
         </button>
         
+<<<<<<< HEAD
         <div className="user-profile-container" style={{ position: 'relative' }}>
           <div 
             className="user-profile" 
@@ -88,6 +101,13 @@ const TopNav = () => {
               </button>
             </div>
           )}
+=======
+        <div className="user-profile">
+          <div className="avatar">
+            <User size={20} />
+          </div>
+          <span className="user-name">Student</span>
+>>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
         </div>
       </div>
     </header>
