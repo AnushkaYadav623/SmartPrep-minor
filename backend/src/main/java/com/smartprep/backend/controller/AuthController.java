@@ -46,18 +46,18 @@ public class AuthController {
                     )
             );
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(401).body(AuthResponse.withMessage("Invalid credentials"));
+            return ResponseEntity.status(401).body(AuthResponse.message("Invalid credentials"));
         }
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getUsername());
         String token = jwtService.generateToken(userDetails);
-        return ResponseEntity.ok(AuthResponse.withToken(token));
+        return ResponseEntity.ok(AuthResponse.token(token));
     }
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
         if (userRepository.existsByEmail(signupRequest.getEmail())) {
-            return ResponseEntity.badRequest().body(AuthResponse.withMessage("Email is already registered"));
+            return ResponseEntity.badRequest().body(AuthResponse.message("Email is already registered"));
         }
 
         User user = new User();
@@ -70,6 +70,6 @@ public class AuthController {
 
         userRepository.save(user);
 
-        return ResponseEntity.ok(AuthResponse.withMessage("User registered successfully"));
+        return ResponseEntity.ok(AuthResponse.message("User registered successfully"));
     }
 }
