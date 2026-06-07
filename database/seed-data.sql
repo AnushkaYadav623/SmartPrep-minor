@@ -26,6 +26,7 @@ INSERT INTO materials (id, user_id, filename, file_type, extracted_content, uplo
 (2, 1, 'Database_Systems_Notes.docx', 'docx', 'Relational Database Management System (RDBMS) stores data in table structures with rows and columns. Relational Algebra is a procedural query language, which takes instances of relations as input and yields instances of relations as output. Major operations: Selection, Projection, Union, Set Difference, Cartesian Product, and Rename.', '2026-06-05 12:30:00'),
 (3, 2, 'Computer_Networks.pdf', 'pdf', 'The OSI Model consists of seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. TCP is a connection-oriented, reliable transport protocol, whereas UDP is connectionless and unreliable but fast.', '2026-06-06 09:15:00');
 
+
 -- 3. Seed Notes
 INSERT INTO notes (id, user_id, material_id, topic, content, generated_at) VALUES
 (1, 1, 1, 'Dynamic Programming Intro', '### Key Takeaways\n1. **DP vs Divide & Conquer**: DP reuses solutions to subproblems (overlapping subproblems), while Divide & Conquer solves them independently.\n2. **Memoization vs Tabulation**: Memoization is top-down (caching recursive results), tabulation is bottom-up (iterative table building).\n3. **Optimal Substructure**: The optimal solution to the problem contains optimal solutions to its subproblems.', '2026-06-05 10:15:00'),
