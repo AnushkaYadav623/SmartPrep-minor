@@ -1,113 +1,112 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Bell, Search, User, LogOut } from 'lucide-react';
+import { Bell, Search, LogOut, Menu, Settings, Sun, Moon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-=======
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { Bell, Search, User } from 'lucide-react';
->>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
+import { useTheme } from '../context/ThemeContext';
 import './TopNav.css';
 
-const TopNav = () => {
+const PAGE_TITLES = {
+  '/': 'Dashboard',
+  '/upload': 'Materials',
+  '/notes': 'Notes',
+  '/quiz': 'Quiz',
+  '/schedule': 'Schedule',
+  '/ai-tutor': 'AI Tutor',
+  '/flashcards': 'Flashcards',
+  '/mock-test': 'Mock Test',
+  '/progress': 'Progress Analytics',
+  '/pyq-analysis': 'PYQ Analysis',
+  '/prediction': 'Prediction Dashboard',
+  '/strategy': 'Exam Strategy',
+};
+
+const TopNav = ({ onMobileMenuClick }) => {
   const location = useLocation();
-<<<<<<< HEAD
   const { user, logout } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-=======
->>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
-  
-  const getPageTitle = () => {
-    switch (location.pathname) {
-      case '/': return 'Dashboard';
-      case '/upload': return 'Materials';
-      case '/notes': return 'Notes';
-      case '/quiz': return 'Quiz';
-      case '/schedule': return 'Schedule';
-      case '/ai-tutor': return 'AI Tutor';
-      default: return 'SmartPrep';
-    }
-  };
+  const dropdownRef = useRef(null);
 
-<<<<<<< HEAD
-  const handleLogout = () => {
-    logout();
-  };
+  const pageTitle = PAGE_TITLES[location.pathname] || 'SmartPrep';
+  const userEmail = user?.sub || 'student@example.com';
+  const userInitial = userEmail.charAt(0).toUpperCase();
 
-=======
->>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <header className="topnav-container">
-      <h1 className="page-title">{getPageTitle()}</h1>
-      
-      <div className="topnav-actions">
-        <div className="search-bar">
-          <Search size={18} className="search-icon" />
-          <input type="text" placeholder="Search..." />
-        </div>
-        
-        <button className="icon-btn">
-          <Bell size={20} />
+      <div className="topnav-left">
+        <button className="mobile-menu-btn icon-btn" onClick={onMobileMenuClick} aria-label="Open menu">
+          <Menu size={20} />
         </button>
-        
-<<<<<<< HEAD
-        <div className="user-profile-container" style={{ position: 'relative' }}>
-          <div 
-            className="user-profile" 
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            style={{ cursor: 'pointer' }}
+        <h1 className="page-title">{pageTitle}</h1>
+      </div>
+
+      <div className="topnav-actions">
+        {/* Search */}
+        <div className="search-bar">
+          <Search size={16} className="search-icon" />
+          <input type="text" placeholder="Search..." aria-label="Search" />
+        </div>
+
+        {/* Theme Toggler */}
+        <button
+          className="icon-btn theme-toggle-btn"
+          onClick={toggleTheme}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
+        {/* Notifications */}
+        <button className="icon-btn" aria-label="Notifications">
+          <Bell size={18} />
+          <span className="notif-badge" />
+        </button>
+
+        <div className="topnav-divider" />
+
+        {/* User Profile */}
+        <div ref={dropdownRef} style={{ position: 'relative' }}>
+          <div
+            className="user-profile"
+            onClick={() => setDropdownOpen(o => !o)}
+            role="button"
+            aria-haspopup="true"
+            aria-expanded={dropdownOpen}
           >
-            <div className="avatar">
-              <User size={20} />
-            </div>
-            <span className="user-name">{user?.sub || 'Student'}</span>
+            <div className="avatar">{userInitial}</div>
+            <span className="user-name">{userEmail}</span>
           </div>
 
           {dropdownOpen && (
-            <div className="profile-dropdown" style={{
-              position: 'absolute',
-              top: '100%',
-              right: 0,
-              marginTop: '0.5rem',
-              backgroundColor: 'var(--bg-color)',
-              border: '1px solid var(--border-color)',
-              borderRadius: '8px',
-              boxShadow: 'var(--shadow-md)',
-              padding: '0.5rem',
-              minWidth: '150px',
-              zIndex: 10
-            }}>
-              <button 
-                onClick={handleLogout}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  width: '100%',
-                  padding: '0.5rem',
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--text-main)',
-                  cursor: 'pointer',
-                  borderRadius: '4px',
-                  textAlign: 'left'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-secondary)'}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+            <div className="profile-dropdown" role="menu">
+              <div className="dropdown-header">
+                <div className="dropdown-header-name">{userEmail.split('@')[0]}</div>
+                <div className="dropdown-header-email">{userEmail}</div>
+              </div>
+              <button className="dropdown-item" onClick={() => setDropdownOpen(false)}>
+                <Settings size={15} />
+                Settings
+              </button>
+              <button
+                className="dropdown-item danger"
+                onClick={() => { setDropdownOpen(false); logout(); }}
               >
-                <LogOut size={16} />
-                <span>Logout</span>
+                <LogOut size={15} />
+                Log out
               </button>
             </div>
           )}
-=======
-        <div className="user-profile">
-          <div className="avatar">
-            <User size={20} />
-          </div>
-          <span className="user-name">Student</span>
->>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
         </div>
       </div>
     </header>

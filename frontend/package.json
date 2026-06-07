@@ -7,11 +7,8 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^1.17.0",
     "jwt-decode": "^4.0.0",
-=======
->>>>>>> b4e15c27c08cf73e41221cce393cd4b6b6c25b35
     "lucide-react": "^1.17.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

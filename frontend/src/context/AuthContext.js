@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
     return () => {
       window.removeEventListener('auth-error', handleAuthError);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = async (email, password) => {
