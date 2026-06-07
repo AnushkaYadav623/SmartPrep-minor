@@ -146,6 +146,7 @@ spring.jpa.hibernate.ddl-auto=update
 
 ---
 
+
 ## 6. Viva Questions & Answers (Database Design)
 
 ### Q1: Why did you choose MySQL over NoSQL (like MongoDB) for this project?
