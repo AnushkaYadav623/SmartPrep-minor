@@ -1,3 +1,6 @@
+-- Create database if not exists
+CREATE DATABASE IF NOT EXISTS smartprep;
+USE smartprep;
 
 -- Drop tables if they exist to allow clean initialization
 DROP TABLE IF EXISTS schedules;
