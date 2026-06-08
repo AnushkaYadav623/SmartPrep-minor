@@ -52,7 +52,6 @@ CREATE TABLE quiz_results (
     CONSTRAINT fk_quiz_results_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
 -- 5. Create schedules table
 CREATE TABLE schedules (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
