@@ -2,7 +2,6 @@
 CREATE DATABASE IF NOT EXISTS smartprep;
 USE smartprep;
 
-
 -- Drop tables if they exist to allow clean initialization
 DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS quiz_results;
