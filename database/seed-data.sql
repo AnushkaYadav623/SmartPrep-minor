@@ -6,7 +6,6 @@ DELETE FROM quiz_results;
 DELETE FROM notes;
 DELETE FROM materials;
 DELETE FROM users;
-
 -- Reset Auto-Increment Counters
 ALTER TABLE users AUTO_INCREMENT = 1;
 ALTER TABLE materials AUTO_INCREMENT = 1;
