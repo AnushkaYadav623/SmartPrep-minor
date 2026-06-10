@@ -9,7 +9,7 @@ This directory contains the SQL scripts required to initialize, seed, and manage
 
 ---
 
-## Entity-Relationship Model
+## Entity-Relationship  Model
 
 ```mermaid
 erDiagram
