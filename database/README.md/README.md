@@ -85,7 +85,6 @@ Stores study files uploaded by students.
 * **file_type** (VARCHAR(50)): Document type (e.g., `pdf`, `docx`, `txt`).
 * **extracted_content** (LONGTEXT): Raw text parsed from the uploaded document, used by AI models for notes and quizzes.
 * **uploaded_at** (DATETIME, Default: CURRENT_TIMESTAMP): Timestamp when uploaded.
-
 ### 3. `notes`
 Stores AI-generated study summaries and notes.
 * **id** (BIGINT, Primary Key): Unique auto-incrementing ID.
