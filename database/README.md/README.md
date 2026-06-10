@@ -1,5 +1,5 @@
 # Database Documentation - SmartPrep AI
-This is for my teammates.
+This is for my teammates to understand it better.
 This directory contains the SQL scripts required to initialize, seed, and manage the database for the **SmartPrep AI - Personalized Learning and Exam Intelligence System**.
 
 ## Files in this Directory
