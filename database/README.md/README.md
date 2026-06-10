@@ -130,6 +130,7 @@ mysql -u root -p < database/schema.sql
 mysql -u root -p < database/seed-data.sql
 ```
 
+
 ### Step 2: Configure Spring Boot Backend
 Ensure your database connection details match your MySQL credentials in:
 `backend/src/main/resources/application.properties`
