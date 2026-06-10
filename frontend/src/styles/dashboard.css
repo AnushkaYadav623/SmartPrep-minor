@@ -10,6 +10,7 @@ body{
 }
 
 .mainContent{
+    
     flex:1;
     padding:25px;
 }
