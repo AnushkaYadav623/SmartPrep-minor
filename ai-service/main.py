@@ -64,3 +64,15 @@ async def tutor_chat(chat: ChatMessage):
 async def generate_schedule(req: ScheduleRequest):
     # Mock Schedule Generation
     return {"status": "success", "message": "Schedule generated based on " + str(len(req.subjects)) + " subjects."}
+
+
+
+
+
+
+
+
+
+
+
+
