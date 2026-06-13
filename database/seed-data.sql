@@ -1,5 +1,4 @@
 USE smartprep;
-
 -- Clear existing data (in order of dependencies)
 DELETE FROM schedules;
 DELETE FROM quiz_results;
@@ -25,7 +24,6 @@ INSERT INTO materials (id, user_id, filename, file_type, extracted_content, uplo
 (1, 1, 'Algorithms_MidSem.pdf', 'pdf', 'Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and storing the results of subproblems to avoid computing the same results again. Principal of Optimality: An optimal sequence of decisions has the property that whatever the initial state and decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.', '2026-06-05 10:00:00'),
 (2, 1, 'Database_Systems_Notes.docx', 'docx', 'Relational Database Management System (RDBMS) stores data in table structures with rows and columns. Relational Algebra is a procedural query language, which takes instances of relations as input and yields instances of relations as output. Major operations: Selection, Projection, Union, Set Difference, Cartesian Product, and Rename.', '2026-06-05 12:30:00'),
 (3, 2, 'Computer_Networks.pdf', 'pdf', 'The OSI Model consists of seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. TCP is a connection-oriented, reliable transport protocol, whereas UDP is connectionless and unreliable but fast.', '2026-06-06 09:15:00');
-
 
 -- 3. Seed Notes
 INSERT INTO notes (id, user_id, material_id, topic, content, generated_at) VALUES
